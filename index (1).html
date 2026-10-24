@@ -217,3 +217,509 @@
       justify-content: center;
       gap: 8px;
     }
+
+    .time-slot {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 6px;
+      padding: 4px 8px;
+      min-width: 44px;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .time-slot span.val {
+      font-size: 18px;
+      font-weight: 900;
+      color: #fff;
+      display: block;
+      font-family: monospace;
+      line-height: 1.1;
+    }
+
+    .time-slot span.lbl {
+      font-size: 8px;
+      color: #94a3b8;
+      text-transform: uppercase;
+    }
+
+    /* Primary CTA Button */
+    .cta-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #00e676 0%, #00b050 100%);
+      color: #042410;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 900;
+      padding: 16px 20px;
+      border-radius: 14px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      box-shadow: 0 0 28px rgba(0, 230, 118, 0.5);
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      animation: pulseBtn 2s infinite ease-in-out;
+      margin-bottom: 14px;
+    }
+
+    .cta-button:active {
+      transform: scale(0.97);
+    }
+
+    @keyframes pulseBtn {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 230, 118, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 35px rgba(0, 230, 118, 0.85);
+      }
+    }
+
+    .cta-button::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.4), rgba(255,255,255,0));
+      transform: rotate(25deg);
+      animation: shine 2.8s infinite;
+    }
+
+    @keyframes shine {
+      0% { left: -60%; }
+      50%, 100% { left: 140%; }
+    }
+
+    /* Benefits 2x2 Grid */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .benefit-card {
+      background: rgba(18, 25, 38, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 10px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .b-icon {
+      font-size: 16px;
+      color: var(--accent-green);
+      margin-bottom: 2px;
+    }
+
+    .b-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .b-desc {
+      font-size: 10px;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    /* Live Spots Left Notification */
+    .spots-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 11px;
+      color: #f59e0b;
+      font-weight: 700;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px dashed rgba(245, 158, 11, 0.35);
+      padding: 8px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+
+    /* Footer Links */
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-green);
+    }
+
+    /* Sticky Bottom CTA Bar */
+    .sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 430px;
+      background: rgba(8, 12, 20, 0.95);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(0, 230, 118, 0.3);
+      padding: 10px 14px;
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sticky-btn {
+      flex: 1;
+      background: var(--accent-green);
+      color: #042410;
+      font-size: 15px;
+      font-weight: 900;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    /* Modals for Legal / Disclaimer */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 20px;
+      max-width: 380px;
+      width: 100%;
+      position: relative;
+      color: #cbd5e1;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .modal-header {
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating 2D Candlestick Canvas -->
+  <canvas id="chartCanvas"></canvas>
+
+  <!-- Mobile Container (430px) -->
+  <div class="mobile-frame">
+    
+    <!-- Top Status Indicator -->
+    <div class="top-pill">
+      <div class="live-dot"></div>
+      Live VIP Telegram Channel
+    </div>
+
+    <!-- Header & Logo -->
+    <div class="header-card">
+      <div class="logo-wrapper">
+        <!-- Logo Image URL config: default fallback included -->
+        <img id="brandLogo" 
+             class="brand-logo-img" 
+             src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=200&auto=format&fit=crop&q=80" 
+             alt="Trade with Munaaf Logo"
+             onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';">
+        <div class="verified-badge">
+          <i class="fa-solid fa-check"></i>
+        </div>
+      </div>
+      <h1 class="channel-title">Trade with Munaaf</h1>
+      <p class="channel-subtitle">Nifty & BankNifty VIP Calls Community</p>
+    </div>
+
+    <!-- Quick Stats Bar -->
+    <div class="stats-ribbon">
+      <div class="stat-item">
+        <h4>128K+</h4>
+        <p>Members</p>
+      </div>
+      <div class="stat-item">
+        <h4 style="color: var(--accent-green);">94.8%</h4>
+        <p>Accuracy</p>
+      </div>
+      <div class="stat-item">
+        <h4 style="color: var(--gold);">FREE</h4>
+        <p>Access</p>
+      </div>
+    </div>
+
+    <!-- Urgency Countdown Timer -->
+    <div class="timer-container">
+      <div class="timer-title">
+        <i class="fa-solid fa-clock"></i> Limited Time Free Invitation
+      </div>
+      <div class="countdown-display">
+        <div class="time-slot">
+          <span class="val" id="minDisplay">04</span>
+          <span class="lbl">Mins</span>
+        </div>
+        <div class="time-slot">
+          <span class="val" id="secDisplay">59</span>
+          <span class="lbl">Secs</span>
+        </div>
+        <div class="time-slot">
+          <span class="val" id="msDisplay">99</span>
+          <span class="lbl">Ms</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Primary Pulsing Telegram CTA -->
+    <a href="https://t.me/+m8ekBizSZ0lhNmM1" target="_blank" rel="noopener noreferrer" class="cta-button">
+      <i class="fa-brands fa-telegram fa-xl"></i>
+      <span>JOIN TELEGRAM NOW</span>
+    </a>
+
+    <!-- Urgent Spots Left Warning -->
+    <div class="spots-badge">
+      <i class="fa-solid fa-fire-flame-curved"></i>
+      Hurry! Only <span id="spotsNum" style="color: #ef4444; font-weight: 900;">7</span> Free VIP spots remaining!
+    </div>
+
+    <!-- Benefits Grid -->
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <i class="fa-solid fa-chart-line b-icon"></i>
+        <div class="b-title">Daily Sure Calls</div>
+        <div class="b-desc">BankNifty, Nifty & Stock Options with clear SL & Targets.</div>
+      </div>
+      <div class="benefit-card">
+        <i class="fa-solid fa-bullseye b-icon"></i>
+        <div class="b-title">Live Guidance</div>
+        <div class="b-desc">Real-time market trend alerts & breakout notifications.</div>
+      </div>
+      <div class="benefit-card">
+        <i class="fa-solid fa-shield-halved b-icon"></i>
+        <div class="b-title">Risk Management</div>
+        <div class="b-desc">Discipline and capital protection strategies for traders.</div>
+      </div>
+      <div class="benefit-card">
+        <i class="fa-solid fa-bolt b-icon"></i>
+        <div class="b-title">Zero Fees</div>
+        <div class="b-desc">100% Free VIP community access for lifetime members.</div>
+      </div>
+    </div>
+
+    <!-- Footer Links / Disclaimer Modals -->
+    <div class="footer-links">
+      <a onclick="openModal('disclaimerModal')">Disclaimer</a>
+      <span>•</span>
+      <a onclick="openModal('termsModal')">Terms</a>
+      <span>•</span>
+      <a onclick="openModal('contactModal')">Contact</a>
+    </div>
+
+  </div>
+
+  <!-- Sticky Bottom Quick CTA -->
+  <div class="sticky-bar">
+    <a href="https://t.me/+m8ekBizSZ0lhNmM1" target="_blank" rel="noopener noreferrer" class="sticky-btn">
+      <i class="fa-brands fa-telegram"></i> JOIN VIP TELEGRAM
+    </a>
+  </div>
+
+  <!-- Disclaimer Modal -->
+  <div class="modal" id="disclaimerModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span>SEBI Disclaimer</span>
+        <button class="modal-close" onclick="closeModal('disclaimerModal')">&times;</button>
+      </div>
+      <p>We are not SEBI registered advisors. All posts, views, and levels shared on our Telegram channel are strictly for educational and training purposes only. Please consult your financial advisor before taking any financial decisions.</p>
+    </div>
+  </div>
+
+  <!-- Terms Modal -->
+  <div class="modal" id="termsModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span>Terms & Conditions</span>
+        <button class="modal-close" onclick="closeModal('termsModal')">&times;</button>
+      </div>
+      <p>By joining the channel, you agree that you are entering of your own free will and understand the market risks associated with derivatives and options trading.</p>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div class="modal" id="contactModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span>Contact Support</span>
+        <button class="modal-close" onclick="closeModal('contactModal')">&times;</button>
+      </div>
+      <p>For inquiries, feedback, or collaborations, contact the administrator directly inside the VIP Telegram channel.</p>
+    </div>
+  </div>
+
+  <!-- Logic Script -->
+  <script>
+    /* ========================================================
+       LOGO CONFIGURATION:
+       अपनी इमेज का URL बदलने के लिए नीचे दिया गया लिंक बदलें:
+    ======================================================== */
+    const LOGO_IMAGE_URL = "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=200&auto=format&fit=crop&q=80";
+
+    const brandLogoElement = document.getElementById('brandLogo');
+    if (brandLogoElement && LOGO_IMAGE_URL) {
+      brandLogoElement.src = LOGO_IMAGE_URL;
+    }
+
+    // Modal Handlers
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+    }
+
+    // Countdown Timer Logic (04:59:99 loop)
+    let totalSeconds = 4 * 60 + 59;
+    let milliseconds = 99;
+
+    const minEl = document.getElementById('minDisplay');
+    const secEl = document.getElementById('secDisplay');
+    const msEl = document.getElementById('msDisplay');
+
+    setInterval(() => {
+      if (milliseconds > 0) {
+        milliseconds--;
+      } else {
+        milliseconds = 99;
+        if (totalSeconds > 0) {
+          totalSeconds--;
+        } else {
+          totalSeconds = 4 * 60 + 59; // Reset timer loop
+        }
+      }
+
+      const m = Math.floor(totalSeconds / 60);
+      const s = totalSeconds % 60;
+
+      minEl.textContent = m < 10 ? '0' + m : m;
+      secEl.textContent = s < 10 ? '0' + s : s;
+      msEl.textContent = milliseconds < 10 ? '0' + milliseconds : milliseconds;
+    }, 10);
+
+    // Animated Spots Left Counter
+    const spotsNumEl = document.getElementById('spotsNum');
+    setInterval(() => {
+      let current = parseInt(spotsNumEl.textContent);
+      if (current > 2 && Math.random() > 0.6) {
+        spotsNumEl.textContent = current - 1;
+      }
+    }, 12000);
+
+    // Floating Candlesticks 2D Canvas Animation
+    const canvas = document.getElementById('chartCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const candles = [];
+    const candleCount = 24;
+
+    for (let i = 0; i < candleCount; i++) {
+      candles.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        w: 5 + Math.random() * 4,
+        h: 20 + Math.random() * 35,
+        wick: 8 + Math.random() * 14,
+        speed: 0.3 + Math.random() * 0.5,
+        isGreen: Math.random() > 0.45
+      });
+    }
+
+    function animateCandles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      candles.forEach(c => {
+        c.y -= c.speed;
+        if (c.y < -60) {
+          c.y = canvas.height + 40;
+          c.x = Math.random() * canvas.width;
+        }
+
+        ctx.fillStyle = c.isGreen ? '#00e676' : '#ef4444';
+        ctx.strokeStyle = c.isGreen ? '#00e676' : '#ef4444';
+        ctx.lineWidth = 1.2;
+
+        // Draw Wick
+        ctx.beginPath();
+        ctx.moveTo(c.x + c.w / 2, c.y - c.wick);
+        ctx.lineTo(c.x + c.w / 2, c.y + c.h + c.wick);
+        ctx.stroke();
+
+        // Draw Body
+        ctx.fillRect(c.x, c.y, c.w, c.h);
+      });
+
+      requestAnimationFrame(animateCandles);
+    }
+    animateCandles();
+  </script>
+</body>
+</html>
