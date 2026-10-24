@@ -102,25 +102,49 @@
         <span><strong class="text-emerald-400" id="liveUserCounter">23 people</strong> joined in the last 10 mins</span>
       </div>
 
-      <!-- Avatar with glowing ring -->
-      <div class="relative mt-1 mb-2.5">
+      <!-- Avatar with customizable Logo Image & Glowing Ring -->
+      <div class="relative mt-1 mb-2.5 group">
         <div class="absolute -inset-1 rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-400 to-green-400 blur-[6px] opacity-80 animate-pulse"></div>
-        <div class="relative w-20 h-20 rounded-full bg-[#090e17] border-2 border-emerald-400/90 flex flex-col items-center justify-center shadow-xl">
-          <!-- Candlestick Icon -->
-          <svg class="w-8 h-8 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 3v3m0 6v9m-2-9h4m8-6v6m0 6v6m-2-12h4"></path>
-            <rect x="4" y="6" width="4" height="6" rx="1" fill="#00E676" fill-opacity="0.3"></rect>
-            <rect x="14" y="9" width="4" height="6" rx="1" fill="#06b6d4" fill-opacity="0.3"></rect>
-          </svg>
-          <span class="text-[9px] font-black tracking-widest text-emerald-300 mt-0.5">MUNAAF</span>
+        <div class="relative w-20 h-20 rounded-full bg-[#090e17] border-2 border-emerald-400/90 overflow-hidden flex items-center justify-center shadow-xl">
+          <!-- Customizable Logo Image Tag -->
+          <img 
+            id="brandLogo" 
+            src="https://placehold.co/120x120/080c14/00E676.png?text=MUNAAF" 
+            alt="Trade with Munaaf Logo" 
+            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            onerror="this.onerror=null; this.src='https://placehold.co/120x120/090e17/00E676.png?text=LOGO';"
+          />
         </div>
-        <!-- SEBI/Verified Green Check -->
+
+        <!-- Verified SEBI/Community Checkmark Badge -->
         <div class="absolute bottom-0 right-0 bg-emerald-500 text-black p-0.5 rounded-full border-2 border-slate-950 shadow">
           <svg class="w-4 h-4 fill-black" viewBox="0 0 24 24">
             <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
           </svg>
         </div>
+
+        <!-- Quick Edit Logo Button -->
+        <button 
+          onclick="toggleModal('modalLogoUrl')" 
+          title="Change Logo URL"
+          class="absolute -top-1 -right-1 bg-slate-900/90 hover:bg-emerald-500 hover:text-black text-slate-300 border border-emerald-500/40 p-1 rounded-full shadow transition-all active:scale-90"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+          </svg>
+        </button>
       </div>
+
+      <!-- Quick 'Edit Logo' Pill Prompt -->
+      <button 
+        onclick="toggleModal('modalLogoUrl')" 
+        class="text-[10px] text-emerald-400/80 hover:text-emerald-300 flex items-center space-x-1 mb-1 transition hover:underline"
+      >
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <span>Change Logo URL</span>
+      </button>
 
       <!-- Verified Community Badge -->
       <div class="flex items-center space-x-1 px-2.5 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-bold text-emerald-400 uppercase tracking-wider mb-1.5">
@@ -302,10 +326,83 @@
       </div>
     </div>
 
+    <!-- MODAL 4: DYNAMIC LOGO URL CHANGER -->
+    <div id="modalLogoUrl" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
+      <div class="bg-slate-900 border border-emerald-500/40 rounded-2xl max-w-xs w-full p-4 text-left shadow-2xl relative">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-sm font-bold text-white flex items-center space-x-1.5">
+            <span class="text-emerald-400">🖼️</span>
+            <span>Update Logo URL</span>
+          </h3>
+          <button onclick="toggleModal('modalLogoUrl')" class="text-slate-400 hover:text-white text-sm">✕</button>
+        </div>
+        <p class="text-[11px] text-slate-400 mb-2.5">
+          Paste any image URL (.png, .jpg, .webp, or hosted SVG) to update the header logo instantly:
+        </p>
+        <div class="space-y-2">
+          <input 
+            type="url" 
+            id="logoUrlInput" 
+            placeholder="https://example.com/logo.png"
+            class="w-full px-3 py-2 text-xs rounded-lg bg-slate-950 border border-slate-700 text-white focus:outline-none focus:border-emerald-400"
+          />
+          <div class="flex space-x-2">
+            <button 
+              onclick="applyCustomLogo()" 
+              class="flex-1 py-2 bg-gradient-to-r from-emerald-500 to-green-400 text-slate-950 font-bold rounded-lg text-xs shadow hover:brightness-110 active:scale-95 transition"
+            >
+              Save & Apply
+            </button>
+            <button 
+              onclick="resetDefaultLogo()" 
+              class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-semibold"
+            >
+              Reset
+            </button>
+          </div>
+        </div>
+        <p class="text-[9px] text-slate-400 mt-2">
+          Tip: You can also permanently set it in the script via <code>DEFAULT_LOGO_URL</code>.
+        </p>
+      </div>
+    </div>
+
   </div>
 
   <!-- Interactive JavaScript -->
   <script>
+    // ==========================================
+    // LOGO CONFIGURATION & LIVE UPDATE
+    // ==========================================
+    // ⚙️ Change this variable to your permanent image URL
+    const DEFAULT_LOGO_URL = "https://placehold.co/120x120/080c14/00E676.png?text=MUNAAF";
+
+    const brandLogoEl = document.getElementById('brandLogo');
+    const logoInputEl = document.getElementById('logoUrlInput');
+
+    // Initialize with stored logo or default
+    const savedLogo = localStorage.getItem('munaaf_brand_logo_url') || DEFAULT_LOGO_URL;
+    if (brandLogoEl) {
+      brandLogoEl.src = savedLogo;
+      if (logoInputEl) logoInputEl.value = savedLogo;
+    }
+
+    function applyCustomLogo() {
+      const newUrl = logoInputEl ? logoInputEl.value.trim() : '';
+      if (newUrl) {
+        brandLogoEl.src = newUrl;
+        localStorage.setItem('munaaf_brand_logo_url', newUrl);
+        toggleModal('modalLogoUrl');
+      }
+    }
+
+    function resetDefaultLogo() {
+      brandLogoEl.src = DEFAULT_LOGO_URL;
+      if (logoInputEl) logoInputEl.value = DEFAULT_LOGO_URL;
+      localStorage.removeItem('munaaf_brand_logo_url');
+      toggleModal('modalLogoUrl');
+    }
+
     // Modal toggle helper
     function toggleModal(id) {
       const modal = document.getElementById(id);
@@ -315,7 +412,7 @@
     }
 
     // Close on background tap
-    ['modalDisclaimer', 'modalTerms', 'modalContact'].forEach(id => {
+    ['modalDisclaimer', 'modalTerms', 'modalContact', 'modalLogoUrl'].forEach(id => {
       const el = document.getElementById(id);
       if (el) {
         el.addEventListener('click', (e) => {
